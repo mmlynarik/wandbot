@@ -29,7 +29,7 @@ import logging
 import os
 import pathlib
 import re
-import sqlite3
+import pysqlite3 as sqlite3
 import string
 from typing import Any, Coroutine, List, Tuple
 

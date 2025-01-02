@@ -45,6 +45,8 @@ nbformat = "^5.10.4"
 nbconvert = "^7.16.4"
 wandb = {extras = ["workspaces"], version = "^0.17.5"}
 tree-sitter = "0.21.3"
+pysqlite3-binary = "^0.5.4"
+fasttext = "^0.9.3"
 
 [tool.poetry.dev-dependencies]
 
