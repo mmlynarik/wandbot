@@ -382,10 +382,10 @@ class FCReportsDataLoader(DataLoader):
             SELECT DISTINCT
                 lower(REGEXP_REPLACE(COALESCE(
                 REGEXP_EXTRACT(report_path, "(--[Vv]ml[^/?]+)"),
-                REGEXP_EXTRACT(report_path, "(/[Vv]ml[^/?]+)"), 
+                REGEXP_EXTRACT(report_path, "(/[Vv]ml[^/?]+)"),
                 REGEXP_EXTRACT(report_path, "([Vv]ml[^/?]+)")),
                 "^[/-]+", "")) as reportID
-            FROM 
+            FROM
                 analytics.dim_reports
             WHERE
                 is_public
@@ -398,23 +398,23 @@ class FCReportsDataLoader(DataLoader):
         client = bigquery.Client(project=self.config.data_source.remote_path)
 
         query = f"""
-        SELECT 
-           created_at, 
+        SELECT
+           created_at,
            description,
-           display_name, 
-           is_public, 
+           display_name,
+           is_public,
            created_using,
-           report_id, 
+           report_id,
            project_id,
            type,
            name,
-           report_path, 
-           showcased_at, 
-           spec, 
-           stars_count, 
-           user_id, 
+           report_path,
+           showcased_at,
+           spec,
+           stars_count,
+           user_id,
            view_count
-        FROM 
+        FROM
             analytics.dim_reports
         WHERE
             is_public
@@ -435,7 +435,7 @@ class FCReportsDataLoader(DataLoader):
         query = """
             SELECT *
             FROM `analytics.stg_mysql_views`
-            WHERE type = 'fullyConnected' 
+            WHERE type = 'fullyConnected'
         """
 
         fc_spec = client.query(query).to_dataframe()
@@ -727,7 +727,7 @@ class FCReportsDataLoader(DataLoader):
                     .encode("raw_unicode_escape")
                     .decode("unicode_escape")
                 )
-            except UnicodeDecodeError as e:
+            except UnicodeDecodeError as _:
                 # fix escape characters with raw_unicode_escape
                 content = self.clean_invalid_unicode_escapes(
                     row_dict["content"]
