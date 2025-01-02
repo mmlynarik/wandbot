@@ -64,7 +64,7 @@ is_initialized = False
 
 
 async def initialize():
-    logger.info(f"Initializing wandbot")
+    logger.info("Initializing wandbot")
     global is_initialized
     if not is_initialized:
         vector_store = VectorStore.from_config(VectorStoreConfig())
@@ -72,9 +72,9 @@ async def initialize():
         chat_router.chat = chat_router.Chat(
             vector_store=vector_store, config=chat_config
         )
-        logger.info(f"Initialized chat router")
+        logger.info("Initialized chat router")
         database_router.db_client = database_router.DatabaseClient()
-        logger.info(f"Initialized database client")
+        logger.info("Initialized database client")
 
         retrieve_router.retriever = retrieve_router.SimpleRetrievalEngine(
             vector_store=vector_store,
@@ -83,8 +83,8 @@ async def initialize():
                 "multilingual_reranker_model": chat_config.multilingual_reranker_model,
             },
         )
-        logger.info(f"Initialized retrieve router")
-        logger.info(f"wandbot initialization complete")
+        logger.info("Initialized retrieve router")
+        logger.info("wandbot initialization complete")
         is_initialized = True
 
 

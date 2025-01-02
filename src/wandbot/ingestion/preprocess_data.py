@@ -21,7 +21,7 @@ Typical usage example:
 
 import json
 import pathlib
-from typing import Any, List, Sequence
+from typing import Any, Iterable, List, Sequence
 
 import tiktoken
 from langchain_core.documents import BaseDocumentTransformer, Document
@@ -86,7 +86,7 @@ class DocumentTransformer(BaseDocumentTransformer):
 
     def filter_smaller_documents(
         self, documents: List[Document], min_size: int = 5
-    ) -> List[Document]:
+    ) -> Iterable[Document]:
         """Filters out nodes that are smaller than the chunk size.
 
         Args:

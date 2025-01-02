@@ -33,18 +33,18 @@ from nbformat.validator import normalize
 import wandb
 from wandbot.ingestion.config import (
     DataStoreConfig,
-    DocodileEnglishStoreConfig,
-    DocodileJapaneseStoreConfig,
-    DocodileKoreanStoreConfig,
+    # DocodileEnglishStoreConfig,
+    # DocodileJapaneseStoreConfig,
+    # DocodileKoreanStoreConfig,
     ExampleCodeStoreConfig,
     ExampleNotebookStoreConfig,
-    FCReportsStoreConfig,
-    SDKCodeStoreConfig,
-    SDKTestsStoreConfig,
-    WandbEduCodeStoreConfig,
-    WeaveCodeStoreConfig,
-    WeaveDocStoreConfig,
-    WeaveExamplesStoreConfig,
+    # FCReportsStoreConfig,
+    # SDKCodeStoreConfig,
+    # SDKTestsStoreConfig,
+    # WandbEduCodeStoreConfig,
+    # WeaveCodeStoreConfig,
+    # WeaveDocStoreConfig,
+    # WeaveExamplesStoreConfig,
 )
 from wandbot.ingestion.utils import (
     clean_contents,
@@ -886,18 +886,18 @@ def load(
     )
 
     configs = [
-        DocodileEnglishStoreConfig(),
-        DocodileJapaneseStoreConfig(),
-        DocodileKoreanStoreConfig(),
+        # DocodileEnglishStoreConfig(),
+        # DocodileJapaneseStoreConfig(),
+        # DocodileKoreanStoreConfig(),
         ExampleCodeStoreConfig(),
         ExampleNotebookStoreConfig(),
-        SDKCodeStoreConfig(),
-        SDKTestsStoreConfig(),
-        WeaveDocStoreConfig(),
-        WeaveCodeStoreConfig(),
-        WeaveExamplesStoreConfig(),
-        WandbEduCodeStoreConfig(),
-        FCReportsStoreConfig(),
+        # SDKCodeStoreConfig(),
+        # SDKTestsStoreConfig(),
+        # WeaveDocStoreConfig(),
+        # WeaveCodeStoreConfig(),
+        # WeaveExamplesStoreConfig(),
+        # WandbEduCodeStoreConfig(),
+        # FCReportsStoreConfig(),
     ]
 
     pool = Pool(cpu_count() - 1)
