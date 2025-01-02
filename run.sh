@@ -1,1 +1,1 @@
-(uvicorn wandbot.api.app:app --host="0.0.0.0" --port=8000) # & (python -m wandbot.apps.slack -l en)
+uvicorn wandbot.api.app:app --host="0.0.0.0" --port=8000; python -m wandbot.apps.slack -l en
