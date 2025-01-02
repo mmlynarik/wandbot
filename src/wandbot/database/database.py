@@ -18,6 +18,6 @@ from wandbot.database.config import DataBaseConfig
 db_config = DataBaseConfig()
 
 engine = create_engine(
-    db_config.SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    db_config.SQLALCHEMY_DATABASE_URL, connect_args=db_config.connect_args
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
