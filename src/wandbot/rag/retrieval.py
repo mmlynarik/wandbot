@@ -7,9 +7,9 @@ from langchain_core.documents import Document
 from langchain_core.runnables import Runnable, RunnablePassthrough
 from pydantic import BaseModel
 
-from wandbot.rag.utils import get_web_contexts
+# from wandbot.rag.utils import get_web_contexts
 from wandbot.retriever.base import VectorStore
-from wandbot.retriever.web_search import YouSearch, YouSearchConfig
+# from wandbot.retriever.web_search import YouSearch, YouSearchConfig
 
 logger = logging.getLogger(__name__)
 
@@ -49,19 +49,19 @@ def run_web_search(query, avoid=False) -> WebSearchResults:
                 web_search_success=False,
                 web_contexts=[],
             )
-        yousearch = YouSearch(YouSearchConfig())
-        web_results = yousearch(query)
-        if web_results.success:
-            web_contexts = get_web_contexts(web_results)
-        else:
-            logger.debug(
-                f"Issue running web search, web_results: {web_results}"
-            )
-            web_contexts = []
-        return WebSearchResults(
-            web_search_success=web_results.success,
-            web_contexts=web_contexts,
-        )
+        # yousearch = YouSearch(YouSearchConfig())
+        # web_results = yousearch(query)
+        # if web_results.success:
+        #     web_contexts = get_web_contexts(web_results)
+        # else:
+        #     logger.debug(
+        #         f"Issue running web search, web_results: {web_results}"
+        #     )
+        #     web_contexts = []
+        # return WebSearchResults(
+        #     web_search_success=web_results.success,
+        #     web_contexts=web_contexts,
+        # )
     except Exception as e:
         logger.error(f"Error running web search: {e}")
         return WebSearchResults(
