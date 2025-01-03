@@ -1,7 +1,7 @@
 """A Slack bot that interacts with users and processes their queries.
 
 This module contains the main functionality of the Slack bot. It listens for mentions of the bot in messages,
-processes the text of the message, and sends a response. It also handles reactions added to messages and 
+processes the text of the message, and sends a response. It also handles reactions added to messages and
 saves them as feedback. The bot supports both English and Japanese languages.
 
 The bot uses the Slack Bolt framework for handling events and the langdetect library for language detection.
@@ -13,6 +13,7 @@ import argparse
 import asyncio
 import logging
 from functools import partial
+from typing import Callable
 
 from slack_bolt.adapter.socket_mode.async_handler import AsyncSocketModeHandler
 from slack_bolt.async_app import AsyncApp
@@ -50,7 +51,7 @@ api_client = AsyncAPIClient(url=config.WANDBOT_API_URL)
 
 
 async def send_message(
-    say: callable, message: str, thread: str = None
+    say: Callable, message: str, thread: str = None
 ) -> SlackResponse:
     message = MrkdwnFormatter()(message)
     if thread is not None:
@@ -61,7 +62,7 @@ async def send_message(
 
 @app.event("app_mention")
 async def command_handler(
-    body: dict, say: callable, logger: logging.Logger
+    body: dict, say: Callable, logger: logging.Logger
 ) -> None:
     """
     Handles the command when the app is mentioned in a message.
